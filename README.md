@@ -26,10 +26,8 @@ Item    Estimated costs
 200 GB standard persistent disk $8.80/month
 Sustained use discount  - $236.21/month
 Total   $559.96/month
-   
-### Running BLAST Analysis
 
-#### Install Singularity
+### Install Singularity
 https://www.sylabs.io/guides/3.0/user-guide/installation.html
 
 ```
@@ -76,7 +74,10 @@ export VERSION=v3.0.3 # or another tag or branch if you like && \
 ### Confirm installation
 singularity --version
 ### output singularity version 3.0.3
+```
+### Run BLAST+ Singularity Image Using a Small Example
 
+```
 ## blastsing image has edirect commands copied from /root/edirect to /blast/bin
 singularity pull docker://stevetsa/blastsing
 singularity run blastsing_latest.sif
@@ -106,6 +107,8 @@ exit
 
 ```
 
+### Run BLAST+ Singularity Image at Production Scale
+  
 One of the promises of cloud computing is scalability. In this section, we will demonstrate how to use the BLAST+ Docker image at production scale on the Google Cloud Platform. We will perform a BLAST analysis similar to the approach described in this [publication](https://www.ncbi.nlm.nih.gov/pubmed/31040829) to compare de novo aligned contigs from bacterial 16S-23S sequencing against the nucleotide collection (nt) database.
 
 To test scalability, we will use inputs of different sizes to estimate the amount of time to download the nucleotide collection database and run BLAST search using the latest version of the BLAST+ Docker image. Expected results are summarized in the following tables.
@@ -203,8 +206,6 @@ exit
 Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
 
 
-```
-
 ## Appendix B - Proof-of-concept for a BLAST Jupyter Notebook
 *Note this is not using the official BLAST+ Docker image.
 
@@ -237,7 +238,9 @@ docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-
 # press control + C in the terminal to stop the Jupyter server.
 
 ```
-Stop the VM instance.  
+### Stop the GCP instance
+Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
+
 
 As an alternative, you can also run this notebook using [MyBinder.org](https://mybinder.readthedocs.io/en/latest/). You will be running the notebook in MyBinder's compute resources and you do not need a GCP account or access.  
 *Currently BLAST version = 2.7.1*
