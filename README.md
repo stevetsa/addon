@@ -2,23 +2,24 @@
 
 [Singularity](https://singularity.lbl.gov/docs-installation) is an alternative to Docker.  
 
+### System Configurations
 Region us-east4 (Northern Virginia)
 Zone us-east4c
 16vCPU 104 GB Memory n1-highmem-16 
 New 200 GB standard persistent disk
 Ubuntu 18.04 LTS
 
+### GCP VM Cost (June 2019)
 $559.96 monthly estimate
 That's about $0.767 hourly
-
 Pay for what you use: No upfront costs and per second billing
-
 Item    Estimated costs
 16 vCPUs + 104 GB memory        $787.38/month
 200 GB standard persistent disk $8.80/month
 Sustained use discount  - $236.21/month
 Total   $559.96/month
-    
+   
+### Running BLAST Analysis
 ```
 ## Section 1. Install Singularity June 2019
 ## https://www.sylabs.io/guides/3.0/user-guide/installation.html
