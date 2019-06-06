@@ -1,6 +1,14 @@
 ## Appendix C - Proof-of-concept for running BLAST Singularity Image
 
+This repository contains documentation for the NCBI BLAST+ command line applications in a Singluarity image. We will demonstrate how to use the image to run BLAST analysis on the Google Cloud Platform using a small basic example and a more advanced production-level example. Some basic knowledge of Unix/Linux commands and BLAST+ is useful in completing this tutorial.  Please complete the [official NCBI BLAST+ Docker image tutorials](https://github.com/ncbi/blast_plus_docs) first.
+
 [Singularity](https://singularity.lbl.gov/docs-installation) is an alternative to Docker.  
+
+In this section, We will use the same small example from Section 1 of the official BLAST tutorials mentioned above.
+
+Input data
+* Query – 1 sequence, 44 nucleotides, file size 0.2 KB
+* Database – 7 sequences, 922 nucleotides, file size 1.7 KB
 
 ### System Configurations
 Region us-east4 (Northern Virginia)
@@ -20,6 +28,10 @@ Sustained use discount  - $236.21/month
 Total   $559.96/month
    
 ### Running BLAST Analysis
+
+#### Install Singularity
+https://www.sylabs.io/guides/3.0/user-guide/installation.html
+
 ```
 ## Section 1. Install Singularity June 2019
 ## https://www.sylabs.io/guides/3.0/user-guide/installation.html
@@ -94,6 +106,15 @@ exit
 
 ```
 
+One of the promises of cloud computing is scalability. In this section, we will demonstrate how to use the BLAST+ Docker image at production scale on the Google Cloud Platform. We will perform a BLAST analysis similar to the approach described in this [publication](https://www.ncbi.nlm.nih.gov/pubmed/31040829) to compare de novo aligned contigs from bacterial 16S-23S sequencing against the nucleotide collection (nt) database.
+
+To test scalability, we will use inputs of different sizes to estimate the amount of time to download the nucleotide collection database and run BLAST search using the latest version of the BLAST+ Docker image. Expected results are summarized in the following tables.
+
+Input files: 28 samples (multi-FASTA files) containing de novo aligned contigs from the publication.  
+(Instructions to [download]((https://figshare.com/s/729b346eda670e9daba4)) and create the input files are described in the [code block](#commands) below.)    
+  
+Database: Pre-formatted BLAST nucleotide collection database, version 5 (nt_v5): 68.7217 GB  
+  
 ```
 ## Section 3. RUN BLAST with Singularity at production scale
 ## Install Singularity if not already done
@@ -178,7 +199,8 @@ blastn -query $HOME/queries/query.fa -db $HOME/blastdb/nt_v5 -num_threads 16 -ou
 exit
 
 ```
-
+### Stop the GCP instance
+Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
 
 
 ```
