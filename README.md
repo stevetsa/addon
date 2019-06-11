@@ -244,7 +244,7 @@ The Jupyter Notebook is a great way to combine free text description with code i
 4. Under Firewall, check "Allow HTTP traffic" and "Allow HTTPS traffic"
 5. Click double down arrows to expand options, click the "Networking" tab and add each of the new firewall rules by typing their names, "open-all-egress" and "open-all-ingress". A grey bubble should appear around the name of the new firewall rule
 6. Click "Create"
-7. Access the VM using the "SSH" button.
+7. Access the VM by clicking the down arrow next to the "SSH" button, select "Open in browser window on custom port" and enter "8888" when prompted. 
 8. [Install Docker](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#step-1-install-docker)
 9. [Install anaconda](https://docs.anaconda.com/anaconda/install/linux/)
 ```
@@ -261,34 +261,18 @@ exit
 conda install -c bioconda blast=2.9.0-0
 conda install -c bioconda entrez-direct
 ```
-
-
-
+11. Start the Jupyter Notebook server by entering
 ```
-ssh -i <your private key> <user>@<External IP> -L 8888:0.0.0.0:8888
-
-# Once in VM, clone the notebook-containing repository and 
-# run the Docker image with the ports open 
-
-git clone https://github.com/stevetsa/jupyter-blast-docker.git
-mkdir jupyter-blast-docker/BLAST
-chmod 777 jupyter-blast-docker/BLAST
-cd jupyter-blast-docker
-docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-docker
-
-# Follow on screen instructions and copy-and-paste the url with token in a brower's url field.
-# Then modify the URL so it has the form below # http://127.0.0.1:8888/?token=xxxxxxxxx
-# Once in Jupyter Lab environment, click on the notebook "*notebook.ipynb."
-# When you are done, close the notebook window and 
-# press control + C in the terminal to stop the Jupyter server.
-
+jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &
 ```
+Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://<external-ip-address>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Now you are ready to run BLAST from a Jupyter Notebook!  
+
 ### Stop the GCP instance
 Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
 
-
 As an alternative, you can also run this notebook using [MyBinder.org](https://mybinder.readthedocs.io/en/latest/). You will be running the notebook in MyBinder's compute resources and you do not need a GCP account or access.  
-*Currently BLAST version = 2.7.1*
 
-To start using BLAST+ in a Jupyter Notebook, click [here](https://github.com/stevetsa/jupyter-blast-docker-binder) and click on the "launch binder" button.  
+To start using BLAST+ in a Jupyter Notebook, click [here](https://github.com/stevetsa/jupyter-blast-docker-binder) and click on the "launch binder" button. Storage and compute are provided by MyBinder.org; therefore, your analysis may be limited by the availability of computing resources.
 
