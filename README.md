@@ -268,6 +268,15 @@ sudo chown -R user:user ~/.local/share/jupyter
 
 ## Start server
 jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &
+
+## Use Docker
+docker pull stevetsa/jupyter-blast-docker
+git clone https://github.com/stevetsa/addon.git
+cd addon
+docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-docker
+# Kill job using 8888
+# sudo lsof -t -i:9001
+
 ```
 Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://<external-ip-address>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
