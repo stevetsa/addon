@@ -263,6 +263,10 @@ conda install -c bioconda entrez-direct
 ```
 11. Start the Jupyter Notebook server by entering
 ```
+## Change permission to allow saving and creating new notebook
+sudo chown -R user:user ~/.local/share/jupyter 
+
+## Start server
 jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &
 ```
 Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://<external-ip-address>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
