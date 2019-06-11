@@ -11,22 +11,22 @@ Input data
 * Database – 7 sequences, 922 nucleotides, file size 1.7 KB
 
 ### System Configurations
-Region us-east4 (Northern Virginia)
-Zone us-east4c
-16vCPU 104 GB Memory n1-highmem-16 
-New 200 GB standard persistent disk
-Ubuntu 18.04 LTS
+Region us-east4 (Northern Virginia)   
+Zone us-east4c   
+16vCPU 104 GB Memory n1-highmem-16   
+New 200 GB standard persistent disk  
+Ubuntu 18.04 LTS  
 
-### GCP VM Cost (June 2019)
-$559.96 monthly estimate
-That's about $0.767 hourly
-Pay for what you use: No upfront costs and per second billing
-Item    Estimated costs
-16 vCPUs + 104 GB memory        $787.38/month
-200 GB standard persistent disk $8.80/month
-Sustained use discount  - $236.21/month
+### GCP VM Cost (June 2019 provided by GCP when VM is created)
+$559.96 monthly estimate  
+That's about $0.767 hourly   
+Pay for what you use: No upfront costs and per second billing   
+_System Congiruation_   
+16 vCPUs + 104 GB memory        $787.38/month   
+200 GB standard persistent disk $8.80/month  
+Sustained use discount  - $236.21/month   
 Total   $559.96/month
-
+  
 ### Install Singularity
 https://www.sylabs.io/guides/3.0/user-guide/installation.html
 
@@ -207,17 +207,62 @@ Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-in
 
 
 ## Appendix B - Proof-of-concept for a BLAST Jupyter Notebook
-*Note this is not using the official BLAST+ Docker image.
+*Note this is using a modified official BLAST+ Docker image.
+  
+The Jupyter Notebook is a great way to combine free text description with code in the same space and the notebook can be easily shared and reproduced.  In this section, it is assumed that you are familiar with the instructions to create a VM [in the main documentation](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#google-cloud-platform-setup).  The following describes one way to run a Jupyter Notebook server on the GCP.
 
-In this section, it is assumed that you have access to a VM.  
+### Step 1. Create new firewall rules
+1. On the console dashboard, expand the navigation menu by clicking on the blue menu button symbol on the left-hand side (if you hover over the symbol, it will label itself as “Navigation menu.”
+2. Under the "Networking" section, hover over "VPC Network" and click "Firewall rules"
+3. On the upper toolbar, click "Create Firewall Rule"
+4. Create a firewall rule to allow all egress traffic
+    Under "Name", enter "open-all-egress"
+    Under "Direction of traffic", select "Egress"
+    Under "Action on match", select "Allow"
+    Under "Target tags, enter "open-all-egress"
+    Under "Destination IP ranges", enter "0.0.0.0/0"
+    Under "Protocols and ports", select "Allow all"
+    Leave all other customization options as the default
+    Click "Create"
+5. Create a firewall rule to allow all ingress traffic
+    Under "Name", enter "open-all-ingress"
+    Under "Direction of traffic", select "Ingress"
+    Under "Action on match", select "Allow"
+    Under "Target tags, enter "open-all-ingress"
+    Under "Source IP ranges", enter "0.0.0.0/0"
+    Under "Protocols and ports", select "Allow all"
+    Leave all other customization options as the default
+    Click "Create"
 
-The Jupyter Notebook is a great way to combine free text description with code in the same space and the notebook can be easily shared and reproduced.
+### Step 2. Create and set up a VM with the ingress/egress settings
+1. On the console dashboard, expand the navigation menu by clicking on the blue menu button symbol on the left-hand side (if you hover over the symbol, it will label itself as “navigation menu.”
+2. Hover over “Compute Engine” and click “VM instances”.
+3. Create a VM with the following settings
+       * Region: us-east4 (Northern Virginia)
+       * Machine Type: 16 vCPU, 104 GB memory, n1-highmem-16
+       * Boot Disk: Click "Change" and select Ubuntu 18.04 LTS, change the "Boot disk size" to 200 GB Standard persistent disk
+4. Under Firewall, check "Allow HTTP traffic" and "Allow HTTPS traffic"
+5. Click double down arrows to expand options, click the "Networking" tab and add each of the new firewall rules by typing their names, "open-all-egress" and "open-all-ingress". A grey bubble should appear around the name of the new firewall rule
+6. Click "Create"
+7. Access the VM using the "SSH" button.
+8. [Install Docker](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#step-1-install-docker)
+9. [Install anaconda](https://docs.anaconda.com/anaconda/install/linux/)
+```
+sudo apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 
-This section has been tested using GCP's free tier VM Machine type
-f1-micro (1 vCPU, 0.6 GB memory)
-Start the VM and connect using keypair.  
+wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
+bash Anaconda3-2019.03-Linux-x86_64.sh
+## Press "Enter" a few times to view the Anaconda End User License Agreement and type "yes" to consent and begin installation.
+exit
+## Return to the VM by clicking "SSH" in the browser
+```
+10. Install BLAST and e-direct
+```
+conda install -c bioconda blast=2.9.0-0
+conda install -c bioconda entrez-direct
+```
 
-From the terminal window,
+
 
 ```
 ssh -i <your private key> <user>@<External IP> -L 8888:0.0.0.0:8888
