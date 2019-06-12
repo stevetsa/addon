@@ -121,10 +121,6 @@ Database: Pre-formatted BLAST nucleotide collection database, version 5 (nt_v5):
 
 ## Modify the number of CPUs (-num_threads) in Step 3 if another type of VM is used.
 
-## pull and start image, if not already done
-#singularity pull docker://stevetsa/blastsing
-singularity run blastsing_latest.sif
-
 ## Step 1. Prepare for analysis
 ## Create directories
 cd ; mkdir -p blastdb queries fasta results blastdb_custom
