@@ -73,8 +73,8 @@ singularity --version
 ### Run BLAST+ Singularity Image Using a Small Example
 
 ```
-## pull and start image, if not already done
-#singularity pull docker://stevetsa/blastsing
+## blastsing image has edirect commands copied from /root/edirect to /blast/bin	
+singularity pull docker://stevetsa/blastsing	
 singularity run blastsing_latest.sif
 
 ### inside container # specify full paths
@@ -120,6 +120,10 @@ Database: Pre-formatted BLAST nucleotide collection database, version 5 (nt_v5):
 ## 16 CPUs, 104 GB memory and 200 GB persistent hard disk
 
 ## Modify the number of CPUs (-num_threads) in Step 3 if another type of VM is used.
+
+## pull and start image, if not already done
+#singularity pull docker://stevetsa/blastsing
+singularity run blastsing_latest.sif
 
 ## Step 1. Prepare for analysis
 ## Create directories
