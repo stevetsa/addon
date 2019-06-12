@@ -73,6 +73,10 @@ singularity --version
 ### Run BLAST+ Singularity Image Using a Small Example
 
 ```
+## pull and start image, if not already done
+#singularity pull docker://stevetsa/blastsing
+singularity run blastsing_latest.sif
+
 ## blastsing image has edirect commands copied from /root/edirect to /blast/bin
 singularity pull docker://stevetsa/blastsing
 singularity run blastsing_latest.sif
