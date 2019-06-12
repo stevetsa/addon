@@ -267,15 +267,10 @@ conda install -c bioconda entrez-direct
 ```
 11. Start the Jupyter Notebook server by entering
 ```
-## Change permission to allow saving and creating new notebook
-sudo chown -R user:user ~/.local/share/jupyter 
-
-## Start server
-jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser &
-
 ## Use Docker
 docker pull stevetsa/jupyter-blast-docker
 git clone https://github.com/stevetsa/addon.git
+chmod 777 addon
 cd addon
 docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-docker
 
