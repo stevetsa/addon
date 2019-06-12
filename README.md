@@ -261,7 +261,7 @@ bash Anaconda3-2019.03-Linux-x86_64.sh
 exit
 ## Return to the VM by clicking "SSH" in the browser
 ```
-10. Start the Jupyter Notebook server by entering
+10. Start the Jupyter Notebook server by running the following commands.
 ```
 ## Use Docker
 docker pull stevetsa/jupyter-blast-docker
@@ -269,7 +269,6 @@ git clone https://github.com/stevetsa/addon.git
 chmod 777 addon
 cd addon
 docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-docker
-
 ```
 Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://\<external-ip-address\>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
