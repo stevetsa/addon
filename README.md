@@ -1,7 +1,9 @@
-## Appendix C - Proof-of-concept for running BLAST Singularity Image
+This repository is an extension to the Official NCBI BLAST+ Docker Image [repository.](https://github.com/ncbi/blast_plus_docs)  If you are not familiar with Docker or general cloud computing concepts, please complete the tutorials in the aforementioned repository first.
 
-This repository contains documentation for the NCBI BLAST+ command line applications in a Singluarity image. We will demonstrate how to use the image to run BLAST analysis on the Google Cloud Platform using a small basic example and a more advanced production-level example. Some basic knowledge of Unix/Linux commands and BLAST+ is useful in completing this tutorial.  Please complete the [official NCBI BLAST+ Docker image tutorials](https://github.com/ncbi/blast_plus_docs) first.
 
+## Appendix D - Proof-of-concept for running BLAST Singularity Image
+
+This section contains documentation for the NCBI BLAST+ command line applications in a Singluarity image. We will demonstrate how to use the image to run BLAST analysis on the Google Cloud Platform using a small basic example and a more advanced production-level example. Some basic knowledge of Unix/Linux commands and BLAST+ is useful in completing this tutorial.  
 [Singularity](https://singularity.lbl.gov/docs-installation) is an alternative to Docker.  
 
 In this section, We will use the same small example from Section 1 of the official BLAST tutorials mentioned above.
@@ -17,16 +19,10 @@ Zone us-east4c
 New 200 GB standard persistent disk  
 Ubuntu 18.04 LTS  
 
-### GCP VM Cost (June 2019 provided by GCP when VM is created)
+### GCP VM Cost (June 2019 - provided by GCP when VM is created)
 $559.96 monthly estimate  
-That's about $0.767 hourly   
-Pay for what you use: No upfront costs and per second billing   
-_System Congiruation_   
-16 vCPUs + 104 GB memory        $787.38/month   
-200 GB standard persistent disk $8.80/month  
-Sustained use discount  - $236.21/month   
-Total   $559.96/month
-  
+$0.767 hourly   
+
 ### Install Singularity
 https://www.sylabs.io/guides/3.0/user-guide/installation.html
 
@@ -206,7 +202,7 @@ exit
 Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
 
 
-## Appendix B - Proof-of-concept for a BLAST Jupyter Notebook
+## Appendix E - Proof-of-concept for a BLAST Jupyter Notebook
 *Note this is using a modified official BLAST+ Docker image.
   
 The Jupyter Notebook is a great way to combine free text description with code in the same space and the notebook can be easily shared and reproduced.  In this section, it is assumed that you are familiar with the instructions to create a VM [in the main documentation](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#google-cloud-platform-setup).  The following describes one way to run a Jupyter Notebook server on the GCP.
