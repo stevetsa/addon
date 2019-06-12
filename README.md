@@ -275,7 +275,7 @@ cd addon
 docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-docker
 
 ```
-Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://<external-ip-address>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://\<external-ip-address\>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 Now you are ready to run BLAST from a Jupyter Notebook!  
 
