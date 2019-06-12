@@ -143,14 +143,14 @@ cat fa/'Sample_1 (paired) trimmed (paired) assembly.fa' \
     fa/'Sample_3 (paired) trimmed (paired) assembly.fa' \
     fa/'Sample_4 (paired) trimmed (paired) assembly.fa' \
     fa/'Sample_5 (paired) trimmed (paired) assembly.fa' > query5.fa
+    
+### Copy query sequences to $HOME/queries folder
+cp query* $HOME/queries/.
 
 ### Start singularity container
 singularity run blastsing_latest.sif
 
 ### Inside container
-    
-### Copy query sequences to $HOME/queries folder
-cp query* $HOME/queries/.
 
 ## Step 2. Display BLAST databases on the GCP
 update_blastdb.pl --showall pretty --source gcp
