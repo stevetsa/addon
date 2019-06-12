@@ -244,8 +244,17 @@ The Jupyter Notebook is a great way to combine free text description with code i
 4. Under Firewall, check "Allow HTTP traffic" and "Allow HTTPS traffic"
 5. Click double down arrows to expand options, click the "Networking" tab and add each of the new firewall rules by typing their names, "open-all-egress" and "open-all-ingress". A grey bubble should appear around the name of the new firewall rule
 6. Click "Create"
-7. Access the VM by clicking the down arrow next to the "SSH" button, select "Open in browser window on custom port" and enter "8888" when prompted. 
-8. [Install Docker](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#step-1-install-docker)
+7. Access the VM by clicking the down arrow next to the "SSH" button.
+8. Install Docker
+```
+## Run these commands to install Docker and add non-root users to run Docker
+sudo snap install docker
+sudo apt update
+sudo apt install -y docker.io
+sudo usermod -aG docker $USER
+exit
+# exit and SSH back in for changes to take effect
+```
 9. [Install anaconda](https://docs.anaconda.com/anaconda/install/linux/)
 ```
 sudo apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
@@ -274,8 +283,6 @@ docker pull stevetsa/jupyter-blast-docker
 git clone https://github.com/stevetsa/addon.git
 cd addon
 docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-docker
-# Kill job using 8888
-# sudo lsof -t -i:9001
 
 ```
 Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://<external-ip-address>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
