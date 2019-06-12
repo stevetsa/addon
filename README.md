@@ -3,10 +3,9 @@ This repository is an extension to the Official NCBI BLAST+ Docker Image [reposi
 
 ## Appendix D - Proof-of-concept for running BLAST Singularity Image
 
-This section contains documentation for the NCBI BLAST+ command line applications in a Singluarity image. We will demonstrate how to use the image to run BLAST analysis on the Google Cloud Platform using a small basic example and a more advanced production-level example. Some basic knowledge of Unix/Linux commands and BLAST+ is useful in completing this tutorial.  
-[Singularity](https://singularity.lbl.gov/docs-installation) is an alternative to Docker.  
+This section contains documentation for the NCBI BLAST+ command line applications in a [Singularity](https://singularity.lbl.gov/docs-installation) image. We will demonstrate how to use the image to run BLAST analysis on the Google Cloud Platform using a small basic example and a more advanced production-level example. Some basic knowledge of Unix/Linux commands and BLAST+ is useful in completing this tutorial.  
 
-In this section, We will use the same small example from Section 1 of the official BLAST tutorials mentioned above.
+In this section, We will first use the same small example from Section 1 of the official BLAST+ Docker repository mentioned above.
 
 Input data
 * Query – 1 sequence, 44 nucleotides, file size 0.2 KB
