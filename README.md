@@ -77,10 +77,6 @@ singularity --version
 #singularity pull docker://stevetsa/blastsing
 singularity run blastsing_latest.sif
 
-## blastsing image has edirect commands copied from /root/edirect to /blast/bin
-singularity pull docker://stevetsa/blastsing
-singularity run blastsing_latest.sif
-
 ### inside container # specify full paths
 blastn -version
 ### Output 
