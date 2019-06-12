@@ -261,12 +261,7 @@ bash Anaconda3-2019.03-Linux-x86_64.sh
 exit
 ## Return to the VM by clicking "SSH" in the browser
 ```
-10. Install BLAST and e-direct
-```
-conda install -c bioconda blast=2.9.0-0
-conda install -c bioconda entrez-direct
-```
-11. Start the Jupyter Notebook server by entering
+10. Start the Jupyter Notebook server by entering
 ```
 ## Use Docker
 docker pull stevetsa/jupyter-blast-docker
@@ -278,7 +273,7 @@ docker run -it --rm -v `pwd`:`pwd` -w `pwd` -p 8888:8888 stevetsa/jupyter-blast-
 ```
 Follow on-screen instructions and copy-and-paste the url with token in a brower's url field.  Then modify the URL so it has the form - http://\<external-ip-address\>:8888/?token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-Now you are ready to run BLAST from a Jupyter Notebook!  
+Now you are ready to run BLAST from a Jupyter Notebook!  Click to open the notebook named `BLAST+ Docker Jupyter Notebook.ipynb` and run all command blocks in the notebook.
 
 ### Stop the GCP instance
 Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
