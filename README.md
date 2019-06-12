@@ -186,7 +186,7 @@ blastn -query $HOME/queries/query1.fa -db $HOME/blastdb/nt_v5 -num_threads 16 -o
 blastn -query $HOME/queries/query5.fa -db $HOME/blastdb/nt_v5 -num_threads 16 -out $HOME/results/blastn.query5.denovo16s.out
 
 ## Run BLAST using query.fa (All 28 samples) 
-## This command will take approximately  minutes to complete.
+## This command will take approximately 145 minutes to complete.
 ## Expected output size: 47.8 GB  
 blastn -query $HOME/queries/query.fa -db $HOME/blastdb/nt_v5 -num_threads 16 -out $HOME/results/blastn.query.denovo16s.out
 
