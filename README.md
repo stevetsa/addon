@@ -2,6 +2,7 @@ This repository is an extension to the Official NCBI BLAST+ Docker Image [reposi
 
 
 ## Appendix D - Proof-of-concept for running BLAST Singularity Image
+*Note this is using a modified BLAST+ Docker image.
 
 This section contains documentation for the NCBI BLAST+ command line applications in a [Singularity](https://singularity.lbl.gov/docs-installation) image. We will demonstrate how to use the image to run BLAST analysis on the Google Cloud Platform using a small basic example and a more advanced production-level example. Some basic knowledge of Unix/Linux commands and BLAST+ is useful in completing this tutorial.  
 
@@ -202,7 +203,7 @@ Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-in
 
 
 ## Appendix E - Proof-of-concept for a BLAST Jupyter Notebook
-*Note this is using a modified official BLAST+ Docker image.
+*Note this is using a modified BLAST+ Docker image.
   
 The Jupyter Notebook is a great way to combine free text description with code in the same space and the notebook can be easily shared and reproduced.  In this section, it is assumed that you are familiar with the instructions to create a VM [in the main documentation](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#google-cloud-platform-setup).  The following describes one way to run a Jupyter Notebook server on the GCP.
 
