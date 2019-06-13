@@ -75,6 +75,7 @@ singularity --version
 
 ```
 ## blastsing image has edirect commands copied from /root/edirect to /blast/bin	
+cd ~
 singularity pull docker://stevetsa/blastsing	
 singularity run blastsing_latest.sif
 
