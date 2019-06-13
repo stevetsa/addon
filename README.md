@@ -173,8 +173,7 @@ du -sk $HOME/blastdb
 ls -al $HOME/queries
 
 ## From this point forward, it may be easier if you run these steps in a script. 
-## Simply copy and paste all the commands below into a file named script.sh
-## Then run the script in the background `nohup bash script.sh > script.out &`
+## A sample script is available in the next code block
 
 ## Step 3. Run BLAST
 ## Run BLAST using query1.fa (Sample 1) 
@@ -197,8 +196,33 @@ blastn -query $HOME/queries/query.fa -db $HOME/blastdb/nt_v5 -num_threads 16 -ou
 
 ## Exit Singularity container
 exit
-
 ```
+
+Alternatively, you can run commands in the singularity image as if it were running directly on the host system.  Unlike Docker, you do not need to have a running container. For example, you can copy and paste all the commands below into a file called `script.sh` then run the script in the background using `nohup bash script.sh > script.out &`.  
+
+Sample script.sh - 
+```
+#singularity exec blastsing_latest.sif blastn -version
+date
+echo "start Analysis 1"
+singularity exec blastsing_latest.sif \
+    blastn -query $HOME/queries/query1.fa -db $HOME/blastdb/nt_v5 -num_threads 16 \
+    -out $HOME/results/blastn.query1.denovo16s.out
+date
+echo "start Analysis 2"
+singularity exec blastsing_latest.sif \
+    blastn -query $HOME/queries/query5.fa -db $HOME/blastdb/nt_v5 -num_threads 16 \
+    -out $HOME/results/blastn.query5.denovo16s.out
+date
+echo "start Analysis 3"
+singularity exec blastsing_latest.sif \
+    blastn -query $HOME/queries/query.fa -db $HOME/blastdb/nt_v5 -num_threads 16 \
+    -out $HOME/results/blastn.query.denovo16s.out
+date
+echo "Done"
+```
+
+
 ### Stop the GCP instance
 Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-instance) or [delete](https://cloud.google.com/compute/docs/instances/stop-start-instance) the VM to prevent incurring additional cost. You can do this at the GCP Console.
 
