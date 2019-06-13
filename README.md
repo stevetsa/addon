@@ -284,7 +284,8 @@ sudo apt-get install -y libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxs
 
 wget https://repo.anaconda.com/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
-## Press "Enter" a few times to view the Anaconda End User License Agreement and type "yes" to consent and begin installation.
+## Press "Enter" a few times to view the Anaconda End User License Agreement
+## Type "yes" to consent and begin installation.  Accept all default values.
 exit
 ## Return to the VM by clicking "SSH" in the browser
 ```
