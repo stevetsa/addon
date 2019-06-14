@@ -291,8 +291,14 @@ exit
 ```
 10. Start the Jupyter Notebook server by running the following commands.
 ```
-## Use Docker
+## The following Docker image is auto-built from
+## https://github.com/stevetsa/jupyter-blast-docker
+
 docker pull stevetsa/jupyter-blast-docker
+
+## The following repository contains the Jupyter Notebook
+## Change as necessary
+
 git clone https://github.com/stevetsa/addon.git
 chmod 777 addon
 cd addon
