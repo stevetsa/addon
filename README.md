@@ -232,7 +232,7 @@ Remember to [stop](https://cloud.google.com/compute/docs/instances/stop-start-in
   
 The Jupyter Notebook is a great way to combine free text description with code in the same space and the notebook can be easily shared and reproduced.  In this section, it is assumed that you are familiar with the instructions to create a VM [in the main documentation](https://github.com/ncbi/blast_plus_docs/blob/master/README.md#google-cloud-platform-setup).  The following describes one way to run a Jupyter Notebook server on the GCP.
 
-*The following Steps 1 and 2 are covered in more detail in the NIH Data Science Cookbook.
+*The following Steps 1 and 2 are covered in more detail in the NIH Data Science Cookbook. (Availability and location of the Cookbook to be determined)
 
 ### Step 1. Create new firewall rules
 1. On the console dashboard, expand the navigation menu by clicking on the blue menu button symbol on the left-hand side (if you hover over the symbol, it will label itself as “Navigation menu.”
