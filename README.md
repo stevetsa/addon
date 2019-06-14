@@ -113,7 +113,7 @@ To test scalability, we will use inputs of different sizes to estimate the amoun
 Input files: 28 samples (multi-FASTA files) containing de novo aligned contigs from the publication.  
 (Instructions to [download]((https://figshare.com/s/729b346eda670e9daba4)) and create the input files are described in the [code block](#commands) below.)    
   
-Database: Pre-formatted BLAST nucleotide collection database, version 5 (nt_v5): 68.7217 GB  
+Database: Pre-formatted BLAST nucleotide collection database, version 5 (nt_v5): 68.7217 GB  (Database size could vary because of regular updates)
   
 ```
 ## Section 3. RUN BLAST with Singularity at production scale
